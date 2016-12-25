@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<include file="struts-default.xml" />
+	
+	<package name="tutorial" extends="struts-default">
+		<interceptors>
+			<interceptor name="replace" class="tutorial.CarNameInterceptor" />
+			<!-- 自定义拦截器 P87 -->
+		</interceptors>
+		
+		<action name="Input" class="tutorial.CarAction">			
+			<result name="input">input.jsp</result>
+			<result name="success">show.jsp</result>
+			
+			<interceptor-ref name="defaultStack" /> <!-- 默认拦截器 -->
+			<interceptor-ref name="replace"></interceptor-ref> 
+			<!-- 自定义拦截器 P87 -->
+		</action>		
+	</package>
+</struts>    
